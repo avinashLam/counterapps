@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("v1/api/product")
@@ -17,6 +19,10 @@ public class ProductController {
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @Autowired
     private ProductService productService;
+    @GetMapping("/")
+    public String home() {
+        return "App is running!";
+    }
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
         logger.debug("Product creation request: {}",product);
